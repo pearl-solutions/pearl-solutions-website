@@ -1,0 +1,136 @@
+.bento {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 16px;
+}
+
+.item {
+  grid-column: span 2;
+  display: flex;
+  flex-direction: column;
+  transition:
+    border-color 300ms ease,
+    transform 400ms var(--ease-out);
+}
+
+.item:nth-child(1),
+.item:nth-child(2) {
+  grid-column: span 3;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .item:hover {
+    border-color: rgb(255 255 255 / 0.16);
+  }
+
+  .item:hover .ui {
+    transform: translateY(-6px);
+  }
+
+  .item:hover .more svg {
+    transform: translateX(3px);
+  }
+}
+
+.visual {
+  position: relative;
+  height: 300px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 40px 28px 0;
+  overflow: hidden;
+  mask-image: linear-gradient(180deg, #000 70%, transparent);
+  -webkit-mask-image: linear-gradient(180deg, #000 70%, transparent);
+}
+
+.halo {
+  position: absolute;
+  left: 50%;
+  top: 30%;
+  width: 70%;
+  aspect-ratio: 1;
+  transform: translateX(-50%);
+  border-radius: 50%;
+  background: radial-gradient(closest-side, var(--tint), transparent);
+  opacity: 0.3;
+}
+
+.ui {
+  position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  transition: transform 500ms var(--ease-out);
+}
+
+.body {
+  padding: 4px 28px 28px;
+  display: grid;
+  gap: 8px;
+}
+
+/* The whole card is the link. */
+.link {
+  text-decoration: none;
+}
+
+.link::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+}
+
+.text {
+  color: var(--text-2);
+  max-width: 46ch;
+}
+
+.more {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 8px;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: var(--mint);
+}
+
+.more svg {
+  transition: transform 200ms var(--ease-out);
+}
+
+@media (max-width: 960px) {
+  .item,
+  .item:nth-child(1),
+  .item:nth-child(2) {
+    grid-column: span 3;
+  }
+
+  .item:nth-child(5) {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 640px) {
+  .bento {
+    grid-template-columns: 1fr;
+  }
+
+  .item,
+  .item:nth-child(1),
+  .item:nth-child(2),
+  .item:nth-child(5) {
+    grid-column: auto;
+  }
+
+  .visual {
+    height: 260px;
+    padding: 28px 16px 0;
+  }
+
+  .body {
+    padding: 4px 20px 24px;
+  }
+}

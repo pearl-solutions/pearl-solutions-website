@@ -1,0 +1,396 @@
+.hero {
+  position: relative;
+  padding-top: calc(var(--header-h) + clamp(56px, 9vw, 110px));
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.spotlight {
+  position: absolute;
+  inset: -20% -10% auto;
+  height: 900px;
+  background: radial-gradient(50% 50% at 50% 0%, rgb(255 255 255 / 0.11), transparent 70%);
+  z-index: -1;
+}
+
+.glowMint {
+  width: 520px;
+  height: 520px;
+  left: calc(50% - 520px);
+  top: 520px;
+  --glow-c: #5fe0cb;
+  opacity: 0.22;
+  z-index: -1;
+}
+
+.glowRose {
+  width: 480px;
+  height: 480px;
+  left: 50%;
+  top: 560px;
+  --glow-c: #f2a0ad;
+  opacity: 0.18;
+  z-index: -1;
+}
+
+.inner {
+  display: grid;
+  justify-items: center;
+  text-align: center;
+}
+
+.chip {
+  white-space: nowrap;
+  animation: up 800ms var(--ease-out) both;
+}
+
+@media (max-width: 440px) {
+  .chipExtra {
+    display: none;
+  }
+
+  .title.title {
+    font-size: 3.25rem;
+  }
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  margin-left: 4px;
+  border-radius: 50%;
+  background: var(--mint);
+  box-shadow: 0 0 0 4px rgb(158 240 220 / 0.18);
+}
+
+.title {
+  margin-top: 28px;
+  max-width: 17ch;
+  animation: up 900ms 80ms var(--ease-out) both;
+}
+
+.sub {
+  margin-top: 24px;
+  max-width: 44ch;
+  font-size: clamp(1.0625rem, 1.4vw, 1.25rem);
+  line-height: 1.5;
+  color: var(--text-2);
+  text-wrap: balance;
+  animation: up 900ms 160ms var(--ease-out) both;
+}
+
+/* Brief input */
+.brief {
+  margin-top: 36px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  width: min(100%, 520px);
+  padding: 6px;
+  border-radius: var(--pill);
+  background: rgb(255 255 255 / 0.04);
+  border: 1px solid var(--line-strong);
+  box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.06);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  animation: up 900ms 240ms var(--ease-out) both;
+  transition: border-color 200ms ease;
+}
+
+.brief:focus-within {
+  border-color: rgb(158 240 220 / 0.5);
+}
+
+.brief input {
+  flex: 1;
+  min-width: 0;
+  height: 44px;
+  padding: 0 16px;
+  border: 0;
+  background: none;
+  outline: none;
+  font-size: 1rem;
+}
+
+.brief input::placeholder {
+  color: var(--text-3);
+}
+
+/* Visual */
+.visual {
+  position: relative;
+  margin-top: clamp(24px, 4vw, 48px);
+  width: min(100%, 1040px);
+  height: clamp(380px, 46vw, 560px);
+  display: grid;
+  place-items: center;
+}
+
+.ring,
+.ring2 {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  border-radius: 50%;
+  border: 1px solid rgb(255 255 255 / 0.07);
+  transform: translate(-50%, -50%);
+}
+
+.ring {
+  width: clamp(320px, 42vw, 520px);
+  aspect-ratio: 1;
+  background: radial-gradient(circle at 50% 30%, rgb(255 255 255 / 0.05), transparent 70%);
+}
+
+.ring2 {
+  width: clamp(480px, 64vw, 820px);
+  aspect-ratio: 1;
+  border-color: rgb(255 255 255 / 0.04);
+}
+
+.mark {
+  position: relative;
+  width: clamp(200px, 26vw, 340px);
+  height: auto;
+  animation: pop 900ms 150ms var(--ease-out) both;
+}
+
+/* The gentle float only where there is a mouse: phones keep the logo still and sharp. */
+@media (hover: hover) and (pointer: fine) {
+  .mark {
+    animation:
+      pop 900ms 150ms var(--ease-out) both,
+      float 7s 1.2s ease-in-out infinite;
+  }
+}
+
+.widget {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  border-radius: var(--radius);
+  text-align: left;
+  background: rgb(22 24 27 / 0.7);
+  border: 1px solid rgb(255 255 255 / 0.1);
+  box-shadow:
+    inset 0 1px 0 rgb(255 255 255 / 0.08),
+    0 24px 48px -16px rgb(0 0 0 / 0.7);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  animation: up 800ms var(--ease-out) both;
+}
+
+.w1 {
+  left: 2%;
+  top: 14%;
+  animation-delay: 300ms;
+}
+
+.w2 {
+  right: 4%;
+  top: 8%;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+  animation-delay: 360ms;
+}
+
+.w3 {
+  left: 8%;
+  bottom: 10%;
+  animation-delay: 420ms;
+}
+
+.w4 {
+  right: 1%;
+  bottom: 18%;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2px;
+  min-width: 220px;
+  animation-delay: 480ms;
+}
+
+.wIcon {
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 10px;
+  font-weight: 700;
+  font-size: 0.9375rem;
+}
+
+.wIcon[data-c="mint"] {
+  background: rgb(158 240 220 / 0.14);
+  color: var(--mint);
+}
+
+.wIcon[data-c="discord"] {
+  background: rgb(88 101 242 / 0.2);
+  color: #aab3ff;
+}
+
+.wTitle {
+  font-size: 0.9375rem;
+  font-weight: 600;
+}
+
+.wSub {
+  font-size: 0.8125rem;
+  color: var(--text-2);
+}
+
+.scores {
+  display: flex;
+  gap: 8px;
+}
+
+.scores span {
+  display: grid;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  border: 3px solid var(--mint);
+  color: var(--mint);
+  font-size: 0.875rem;
+  font-weight: 700;
+}
+
+.bar {
+  display: block;
+  width: 100%;
+  height: 4px;
+  margin-top: 8px;
+  border-radius: 4px;
+  background: linear-gradient(90deg, var(--mint) 0 72%, rgb(255 255 255 / 0.1) 72%);
+}
+
+/* Stack marquee */
+.stack {
+  margin-top: clamp(40px, 6vw, 72px);
+  padding-bottom: clamp(48px, 7vw, 96px);
+  text-align: center;
+}
+
+.stackLabel {
+  font-size: 0.875rem;
+  color: var(--text-3);
+}
+
+.marquee {
+  margin-top: 24px;
+  overflow: hidden;
+  mask-image: linear-gradient(90deg, transparent, #000 15%, #000 85%, transparent);
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 15%, #000 85%, transparent);
+}
+
+.track {
+  display: flex;
+  gap: 48px;
+  width: max-content;
+  animation: marquee 60s linear infinite;
+}
+
+.track li {
+  font-size: 1.125rem;
+  opacity: 0.7;
+}
+
+.track li svg {
+  width: 22px;
+  height: 22px;
+}
+
+@keyframes up {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+}
+
+@keyframes pop {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+}
+
+@keyframes float {
+  50% {
+    transform: translateY(-12px);
+  }
+}
+
+@keyframes marquee {
+  to {
+    transform: translateX(calc(-50% - 24px));
+  }
+}
+
+@media (max-width: 800px) {
+  .w2,
+  .w4 {
+    display: none;
+  }
+
+  .w1 {
+    left: 0;
+    top: -8px;
+  }
+
+  .w3 {
+    left: auto;
+    right: 0;
+    bottom: -8px;
+  }
+
+  .visual {
+    height: 330px;
+    margin-top: 28px;
+  }
+
+  .ring {
+    width: 260px;
+  }
+
+  .ring2 {
+    width: 380px;
+  }
+
+  .mark {
+    width: 190px;
+  }
+
+  .widget {
+    padding: 10px 12px;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    background: rgb(22 24 27 / 0.92);
+  }
+
+  .stack {
+    margin-top: 24px;
+    padding-bottom: 40px;
+  }
+}
+
+@media (max-width: 480px) {
+  .brief {
+    flex-direction: column;
+    border-radius: var(--radius-lg);
+    padding: 8px;
+  }
+
+  .brief input {
+    width: 100%;
+    text-align: center;
+  }
+
+  .brief button {
+    width: 100%;
+  }
+}

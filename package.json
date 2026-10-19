@@ -1,0 +1,25 @@
+{
+  "name": "pearl-solutions-website",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "NEXT_IMAGE_UNOPTIMIZED=1 node node_modules/next/dist/bin/next dev",
+    "build": "node node_modules/next/dist/bin/next build",
+    "start": "node node_modules/next/dist/bin/next start",
+    "typecheck": "node node_modules/typescript/bin/tsc --noEmit",
+    "start:usb": "NEXT_IMAGE_UNOPTIMIZED=1 node node_modules/next/dist/bin/next start",
+    "build:usb": "NEXT_IMAGE_UNOPTIMIZED=1 node node_modules/next/dist/bin/next build",
+    "brand": "node scripts/build-brand.mjs"
+  },
+  "dependencies": {
+    "next": "16.4.2",
+    "react": "19.3.1",
+    "react-dom": "19.3.1"
+  },
+  "devDependencies": {
+    "@types/node": "^22.15.0",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.2.0",
+    "typescript": "~5.9.3"
+  }
+}
